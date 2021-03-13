@@ -1,0 +1,48 @@
+﻿@model IEnumerable<CRUDSQLite.Models.Airplane>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="AddAirplane" class="btn btn-success">Add airplane</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Manufacturer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Passengers)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Manufacturer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Passengers)
+            </td>
+            <td>
+                <a asp-action="UpdateAirplane" asp-route-id="@item.AirplaneId" class="btn btn-primary">Update</a> |
+                <form asp-action="DeleteAirplane" asp-route-id="@item.AirplaneId">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>               
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
